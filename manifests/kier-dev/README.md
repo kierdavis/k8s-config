@@ -11,3 +11,7 @@ Anything not related to any particular app. Currently it's just the namespace de
 A tiny deployment + service + ingress setup that serves a "hello, world!" webpage over HTTP.
 
 https://helloworld.kierdavis.com:8081/
+
+## wiki.yaml
+
+Personal wiki using [gollum](https://github.com/gollum/gollum).
