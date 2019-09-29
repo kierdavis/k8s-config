@@ -1,0 +1,25 @@
+# PersistentVolumes cannot be namespaced.
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kier-wiki-data
+  labels:
+    id: kier-wiki-data
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /home/k8s-volumes/kier-wiki-data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - beagle2

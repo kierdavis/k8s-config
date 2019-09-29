@@ -1,3 +1,23 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wiki-data
+  namespace: kier-dev
+  labels:
+    app: wiki
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      id: kier-wiki-data
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,6 +41,13 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+        volumeMounts:
+        - name: data
+          mountPath: /wiki
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: wiki-data
 
 ---
 
