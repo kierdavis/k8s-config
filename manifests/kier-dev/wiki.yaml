@@ -78,6 +78,9 @@ metadata:
     app: wiki
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
 spec:
   rules:
   - host: wiki.dev.kierdavis.com
