@@ -39,6 +39,8 @@ metadata:
   labels:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
+data:
+  5555: "kier/vpn-server:wireguard"
 
 ---
 apiVersion: v1
@@ -251,6 +253,10 @@ spec:
             - name: https
               containerPort: 443
               hostPort: 8081
+            - name: wireguard
+              containerPort: 5555
+              hostPort: 5555
+              protocol: UDP
           livenessProbe:
             failureThreshold: 3
             httpGet:
