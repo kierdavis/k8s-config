@@ -1,0 +1,95 @@
+# App that mirrors an upstream Nix channel while prebuilding some derivations.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nix-precache
+  namespace: kier
+  labels:
+    app: nix-precache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nix-precache
+  template:
+    metadata:
+      labels:
+        app: nix-precache
+    spec:
+      containers:
+      - name: nix-precache
+        image: kierdavis/nix-precache:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http-cache
+          containerPort: 5000
+        - name: http-channel
+          containerPort: 8000
+        env:
+        - name: NIX_CHANNEL_PROXY_UPSTREAM_CHANNEL_URL
+          value: https://nixos.org/channels/nixos-19.09
+        # - name: NIX_CHANNEL_PROXY_BUILD_EXPRESSION
+        #   value:
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nix-precache-cache
+  namespace: kier
+  labels:
+    app: nix-precache-cache
+spec:
+  selector:
+    app: nix-precache
+  ports:
+  - name: http
+    port: 80
+    targetPort: http-cache
+    protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nix-precache-channel
+  namespace: kier
+  labels:
+    app: nix-precache-channel
+spec:
+  selector:
+    app: nix-precache
+  ports:
+  - name: http
+    port: 80
+    targetPort: http-channel
+    protocol: TCP
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: nix-precache
+  namespace: kier
+  labels:
+    app: nix-precache
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: cache.nix.kierdavis.com
+    http:
+      paths:
+      - backend:
+          serviceName: nix-precache-cache
+          servicePort: http
+  - host: channel.nix.kierdavis.com
+    http:
+      paths:
+      - backend:
+          serviceName: nix-precache-channel
+          servicePort: http
