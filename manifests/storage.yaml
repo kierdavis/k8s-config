@@ -1,4 +1,4 @@
-# PersistentVolumes cannot be namespaced.
+# Defines local persistent volumes used by pods.
 
 apiVersion: v1
 kind: PersistentVolume

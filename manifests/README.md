@@ -1,5 +1,3 @@
 Sub-directories here correspond to namespaces.
 
-## storage.yaml
-
-Defines local persistent volumes used by pods.
+Loose files define resources that cannot be namespaced, such as persistent volumes.

@@ -1,3 +1,6 @@
+# Out-of-the-box config for Weave Net, which provides a pod networking service to the cluster via the CNI interface.
+# Originally downloaded from `https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')`.
+
 apiVersion: v1
 kind: List
 items:
