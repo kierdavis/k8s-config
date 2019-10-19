@@ -1,0 +1,94 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: static-websites-nginx-config
+  namespace: kier
+  labels:
+    app: static-websites
+data:
+  default.conf: |
+    server {
+      listen 80;
+      listen [::]:80;
+      server_name kierdavis.com;
+      root /var/www/kierdavis.com/www/htdocs;
+      index index.html index.htm;
+    }
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-websites
+  namespace: kier
+  labels:
+    app: static-websites
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: static-websites
+  template:
+    metadata:
+      labels:
+        app: static-websites
+    spec:
+      containers:
+      - name: static-websites
+        image: nginx
+        ports:
+        - name: http
+          containerPort: 80
+        volumeMounts:
+        - name: content
+          mountPath: /var/www
+          readOnly: true
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+          readOnly: true
+      volumes:
+      - name: content
+        hostPath:
+          path: /var/www
+      - name: nginx-config
+        configMap:
+          name: static-websites-nginx-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: static-websites
+  namespace: kier
+  labels:
+    app: static-websites
+spec:
+  selector:
+    app: static-websites
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: static-websites
+  namespace: kier
+  labels:
+    app: static-websites
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: kierdavis.com
+    http:
+      paths:
+      - backend:
+          serviceName: static-websites
+          servicePort: http
