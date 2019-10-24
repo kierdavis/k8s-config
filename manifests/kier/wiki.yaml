@@ -24,12 +24,12 @@ spec:
         - name: http
           containerPort: 8080
         volumeMounts:
-        - name: data
+        - name: content
           mountPath: /wiki
       volumes:
-      - name: data
+      - name: content
         hostPath:
-          path: /home/k8s/kier/wiki
+          path: /home/k8s/kier/wiki-content
 
 ---
 
