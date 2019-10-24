@@ -1,0 +1,157 @@
+# Music streaming using mstream: https://www.mstream.io/
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mstream-config-template
+  namespace: kier
+  labels:
+    app: mstream
+data:
+  config.json.template: |
+    {
+      "port": 3000,
+      "webAppDirectory": "public",
+      "writeLogs": false,
+      "noUpload": true,
+      "scanOptions": {
+        "skipImg": false,
+        "scanInterval": 1.5,
+        "pause": 50,
+        "saveInterval": 500,
+        "bootScanDelay": 15
+      },
+      "storage": {
+        "albumArtDirectory": "/cache/album-art",
+        "dbDirectory": "/cache/db",
+        "logsDirectory": "/cache/logs"
+      },
+      "folders": {
+        "library": {
+          "root": "/music"
+        }
+      },
+      "lastfm-user": "kierdavis",
+      "lastfm-password": "@LASTFM_PASSWORD@"
+    }
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mstream
+  namespace: kier
+  labels:
+    app: mstream
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mstream
+  template:
+    metadata:
+      labels:
+        app: mstream
+    spec:
+      initContainers:
+      - name: init
+        image: busybox:1.28
+        volumeMounts:
+        - name: config-template
+          mountPath: /config-template
+          readOnly: true
+        - name: config
+          mountPath: /config
+        - name: cache
+          mountPath: /cache
+        env:
+        - name: LASTFM_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: lastfm
+              key: password
+        command:
+        - 'sh'
+        - '-c'
+        - |
+          set -eu
+          sed "s,@LASTFM_PASSWORD@,$LASTFM_PASSWORD," /config-template/config.json.template > /config/config.json
+          mkdir -p /cache/album-art /cache/db /cache/logs
+          chown 987:987 /cache/album-art /cache/db /cache/logs
+      containers:
+      - name: mstream
+        image: linuxserver/mstream:amd64-latest
+        ports:
+        - name: http
+          containerPort: 3000
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: music
+          mountPath: /music
+          readOnly: true
+        - name: cache
+          mountPath: /cache
+        env:
+        - name: USE_JSON
+          value: "true"
+        - name: TZ
+          value: Europe/London
+        - name: PUID
+          value: "987"  # I'd rather it just ran as root, but this image requires us to pick a non-root UID to run as.
+        - name: PGID
+          value: "987"
+      volumes:
+      - name: config-template
+        configMap:
+          name: mstream-config-template
+      - name: config
+        emptyDir: {}
+      - name: music
+        hostPath:
+          path: /home/k8s/kier/music
+      - name: cache
+        hostPath:
+          path: /home/k8s/kier/mstream-cache
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mstream
+  namespace: kier
+  labels:
+    app: mstream
+spec:
+  selector:
+    app: mstream
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: mstream
+  namespace: kier
+  labels:
+    app: mstream
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
+spec:
+  rules:
+  - host: mstream.kierdavis.com
+    http:
+      paths:
+      - backend:
+          serviceName: mstream
+          servicePort: http
