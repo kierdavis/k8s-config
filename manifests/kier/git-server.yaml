@@ -1,0 +1,74 @@
+# Git repository server
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: git-server-keys
+  namespace: kier
+  labels:
+    app: git-server
+data:
+  keys.pub: |
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbTr+M72gEe39Lr0UEF2mFigbXF/xkDCYwUyhi/owvxYyMqpkEz1qp+i4c8kt+rbE3mfHniFYY0n5UrnKtNzwMtm14fHg4SBdoAvH3sBbiuYajNJUNUQKj/ZhHxFKz++pFEbz6pmEJwpq6XfH2MF3suIBKUzGY7CAwKnLhy1/Y53Zsrem3LLjWvhuxxIkjIPHutZtIq9e+/g9YsVwGQpCZm32z3CEwg7mO0Ldb/LkKfcpmqhUZZOa0dAdLRSq4NgsiZo7djeuCLFtR9N+57ydLpea/3aI95RQrqeGte5tEtNIFQH6OOIXA/e0Z03xdx5WpeFv5MRDEiobOzJCzAdS1 kier@beagle2
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCr5oNVuZMYi1SwOUpIt13uhfSMzpP1e4g7WLjQJPa+vq8zOD2+ryHJgLbN+lw73ZQOVlSc1DZ4aA5DFF9SdPXdIct8hWw5DBqktO2vO7w7i7V68RrsGwcxHfMtbA7kfm1plO8tCcoP3IuWFONysowOhU0CKzwfsvnHex6s+t5GE6Y4KK+aFpzrqRkP2VnkK0nMP+2jeH4AMNEIZg1scO7BCFZZYeBPNLdT3tbnH+z6BPHr1CpT2iEaZEKsjGUPLdoqrXC2fqSFn8PJRCYfRAt3dxV1lQbZ/dt2sUZgzBz9XRhp5WPzWhRv6CVx2DFD3TnLkjQoC/7sHA6NRYJVI5b3 kier@coloris
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOwUC9OqLttu9B4qk+V83vwCBKKgqjwF41BG5fj5wgQ+ kier@saelli
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFBJWdK3mkMuLx5l+gmhrODNkmYlDWZoGUKc9JLmjDQ9 kier@campanella2
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDCvo4MRJHzXAqSNvD3tB34QpYj1nYw7o8pcsZtnGH5EU35hWUrCSAaOEggTy1hO+Y+hc6e0A6ZvSzSyABJh+W35SKVitNQuuGQRdYat2NlJC6hO1OVLsdKyjIvEqEHssXyOr9neSSw/qOthXS0s0UCtvXafVRiVY+IZvuqJduoVHitN9WzSKUjjjZJuc5sup70wI/cDRu9N3smwKQfflC5Kz72YQJ2S7eBPe06FR50RnocUGhCn6k39ZAQYbIc0IIvyO+GEvKBzwOhYwzxzMejupUpcC2VBIDo+akb0rvFFMd7OAmVirxzQy0G8OgNQUF60sztgOOjob0nC5xfTGt6+wRyGCbSfz2kz90AhM5ATbLyXFhRAzwo5L50RfEEQQ6NPTyim49fFtOPhG9SCSugeUaS5pW9jrUbJ/ZaeyO0X8K76orIjWTlA2NpMc+72QA3i/fZsbYupGkP1bynBmM2FIxb6ZX5qkYM8MWMNj0NdmxnDroxYqZ0wmFoepUcqvGpxuSkIRc+EYHOrWRlY+MTy4tkhlr4xMC35Uu90xVOA6SWbHTfKbktO1ATijOClsU7EW3mv6xwuWnYkCajdWnumz1RUIrCb81hlPi6t4r8licenevNlMWy3LN+ZOYTRy/7Znq7esrm1Qyuhp1phvTEck/cEYpuajIjj8jjV0sRVw== PasswordStore@MotoG5-201803
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM5NZWLLmLVS+p+qW5WJo0AwZTi+og6xiOqdDK/WAc1x ConnectBot@MotoG5-201803
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-server
+  namespace: kier
+  labels:
+    app: git-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: git-server
+  template:
+    metadata:
+      labels:
+        app: git-server
+    spec:
+      containers:
+      - name: git-server
+        image: kierdavis/git-server-docker:latest
+        imagePullPolicy: Always
+        ports:
+        - name: ssh
+          containerPort: 22
+        volumeMounts:
+        - name: keys
+          mountPath: /git-server/keys
+        - name: repos
+          mountPath: /git-server/repos
+      volumes:
+      - name: keys
+        configMap:
+          name: git-server-keys
+      - name: repos
+        hostPath:
+          path: /home/k8s/kier/git-repos
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: git-server
+  namespace: kier
+  labels:
+    app: git-server
+spec:
+  selector:
+    app: git-server
+  ports:
+  - name: ssh
+    port: 22
+    targetPort: ssh
+    protocol: TCP
