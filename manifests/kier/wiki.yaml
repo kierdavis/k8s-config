@@ -1,25 +1,5 @@
 # Personal wiki using gollum: https://github.com/gollum/gollum
 
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: wiki-data
-  namespace: kier
-  labels:
-    app: wiki
-spec:
-  accessModes:
-    - ReadWriteOnce
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 10Gi
-  selector:
-    matchLabels:
-      id: kier-wiki-data
-
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,8 +28,8 @@ spec:
           mountPath: /wiki
       volumes:
       - name: data
-        persistentVolumeClaim:
-          claimName: wiki-data
+        hostPath:
+          path: /home/k8s/kier/wiki
 
 ---
 
