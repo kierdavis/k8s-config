@@ -1,0 +1,80 @@
+# Music streaming using polaris: https://github.com/agersant/polaris
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polaris
+  namespace: kier
+  labels:
+    app: polaris
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: polaris
+  template:
+    metadata:
+      labels:
+        app: polaris
+    spec:
+      containers:
+      - name: polaris
+        image: kierdavis/docker-polaris:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 5050
+        volumeMounts:
+        - name: music
+          mountPath: /music
+          readOnly: true
+        - name: cache
+          mountPath: /var/lib/polaris
+        env:
+        - name: POLARIS_PORT
+          value: "5050"  # this is the default value, but need to override k8s inserting some annoying var with the same name and entirely the wrong value.
+      volumes:
+      - name: music
+        hostPath:
+          path: /home/k8s/kier/music
+      - name: cache
+        hostPath:
+          path: /home/k8s/kier/polaris-cache
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: polaris
+  namespace: kier
+  labels:
+    app: polaris
+spec:
+  selector:
+    app: polaris
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: polaris
+  namespace: kier
+  labels:
+    app: polaris
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: polaris.kierdavis.com
+    http:
+      paths:
+      - backend:
+          serviceName: polaris
+          servicePort: http
