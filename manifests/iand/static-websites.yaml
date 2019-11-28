@@ -432,6 +432,12 @@ spec:
       - backend:
           serviceName: static-websites
           servicePort: http
+  - host: blog.iandavis.com
+    http:
+      paths:
+      - backend:
+          serviceName: static-websites
+          servicePort: http
   - host: amberfell.com
     http:
       paths:
