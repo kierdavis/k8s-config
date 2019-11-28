@@ -70,6 +70,7 @@ metadata:
     app: polaris
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
   rules:
   - host: polaris.kierdavis.com
@@ -78,3 +79,7 @@ spec:
       - backend:
           serviceName: polaris
           servicePort: http
+  tls:
+  - hosts:
+    - polaris.kierdavis.com
+    secretName: polaris-tls

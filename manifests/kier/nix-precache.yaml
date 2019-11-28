@@ -79,6 +79,7 @@ metadata:
     app: nix-precache
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
   rules:
   - host: cache.nix.kierdavis.com
@@ -93,3 +94,8 @@ spec:
       - backend:
           serviceName: nix-precache-channel
           servicePort: http
+  tls:
+  - hosts:
+    - cache.nix.kierdavis.com
+    - channel.nix.kierdavis.com
+    secretName: nix-precache-tls
