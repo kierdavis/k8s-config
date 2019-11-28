@@ -1,0 +1,34 @@
+Ports allocated on beagle2
+
+== k8s services ==
+80     http
+443    https
+9002   git server ssh
+
+== k8s infrastructure ==
+2379   etcd
+2380   etcd
+2381   etcd
+6443   kube-apiserver
+6781   weave-npc
+6782   weaver
+6783   weaver
+6784   weaver
+10248  kubelet
+10249  kube-proxy
+10250  kubelet
+10251  kube-scheduler
+10252  kube-controller
+10256  kube-proxy
+10257  kube-controller
+10259  kube-scheduler
+10270  nginx-ingress healthz
+10271  nginx-ingress status
+10272  nginx-ingress stream
+37895  kubelet
+
+== host system ==
+22     ssh
+25     smtp
+8384   syncthing
+22000  syncthing
