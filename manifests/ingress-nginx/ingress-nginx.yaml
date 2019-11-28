@@ -41,8 +41,7 @@ metadata:
   labels:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
-data:
-  9001: "kier/vpn-server:wireguard"
+data: {}
 
 ---
 apiVersion: v1
