@@ -84,6 +84,7 @@ metadata:
     app: static-websites
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
   rules:
   - host: kierdavis.com
@@ -92,3 +93,7 @@ spec:
       - backend:
           serviceName: static-websites
           servicePort: http
+  tls:
+  - hosts:
+    - kierdavis.com
+    secretName: static-websites-tls
