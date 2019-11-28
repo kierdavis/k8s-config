@@ -1,5 +1,5 @@
 # A tiny deployment + service + ingress setup that serves a "hello, world!" webpage over HTTP.
-# https://helloworld.kierdavis.com:8080/
+# https://helloworld.kierdavis.com/
 
 apiVersion: apps/v1
 kind: Deployment

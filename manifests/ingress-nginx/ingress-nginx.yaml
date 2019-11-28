@@ -217,12 +217,13 @@ spec:
         prometheus.io/port: "10254"
         prometheus.io/scrape: "true"
     spec:
+      hostNetwork: true
       # wait up to five minutes for the drain of connections
       terminationGracePeriodSeconds: 300
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.26.0
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.26.1
           args:
             - /nginx-ingress-controller
             - --configmap=$(POD_NAMESPACE)/nginx-configuration
@@ -230,6 +231,9 @@ spec:
             - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx
             - --annotations-prefix=nginx.ingress.kubernetes.io
+            - --healthz-port=10270
+            - --status-port=10271
+            - --stream-port=10272
           securityContext:
             allowPrivilegeEscalation: true
             capabilities:
@@ -248,26 +252,11 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-          ports:
-            - name: http
-              containerPort: 80
-              hostPort: 8080
-            - name: https
-              containerPort: 443
-              hostPort: 8081
-            - name: kier-wireguard
-              containerPort: 9001
-              hostPort: 9001
-              protocol: UDP
-            - name: kier-git-ssh
-              containerPort: 9002
-              hostPort: 9002
-              protocol: TCP
           livenessProbe:
             failureThreshold: 3
             httpGet:
               path: /healthz
-              port: 10254
+              port: 10270
               scheme: HTTP
             initialDelaySeconds: 10
             periodSeconds: 10
@@ -277,7 +266,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /healthz
-              port: 10254
+              port: 10270
               scheme: HTTP
             periodSeconds: 10
             successThreshold: 1
