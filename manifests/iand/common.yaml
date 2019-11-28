@@ -1,0 +1,6 @@
+# Anything not related to any particular app. Currently it's just the namespace definition.
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: iand
