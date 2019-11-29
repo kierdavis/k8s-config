@@ -418,6 +418,7 @@ metadata:
     app: static-websites
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
   rules:
   - host: iandavis.com
@@ -558,3 +559,25 @@ spec:
       - backend:
           serviceName: static-websites
           servicePort: http
+  tls:
+  - hosts:
+    - iandavis.com
+    - www.iandavis.com
+    - blog.iandavis.com
+    - genealogy.iandavis.com
+    - scratch.iandavis.com
+    secretName: tls-cert-iandavis
+  - hosts:
+    - amberfell.com
+    - www.amberfell.com
+    secretName: tls-cert-amberfell
+  - hosts:
+    - vocab.org
+    - www.vocab.org
+    - open.vocab.org
+    secretName: tls-cert-vocab
+  - hosts:
+    - dataincubator.org
+    - www.dataincubator.org
+    - patterns.dataincubator.org
+    secretName: tls-cert-dataincubator
