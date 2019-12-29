@@ -219,6 +219,8 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       hostNetwork: true
+      nodeSelector:
+        kubernetes.io/hostname: beagle2
       # wait up to five minutes for the drain of connections
       terminationGracePeriodSeconds: 300
       serviceAccountName: nginx-ingress-serviceaccount
