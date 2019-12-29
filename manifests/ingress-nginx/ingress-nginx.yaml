@@ -203,6 +203,8 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
 spec:
   replicas: 1
+  strategy:
+    type: Recreate  # delete the old pod before creating the new one, since two pods can't listen on same host ports at once
   selector:
     matchLabels:
       app.kubernetes.io/name: ingress-nginx
