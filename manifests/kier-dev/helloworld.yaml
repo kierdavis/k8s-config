@@ -54,7 +54,7 @@ metadata:
     app: helloworld
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/issuer: letsencrypt-staging
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
   rules:
   - host: helloworld.kierdavis.com
