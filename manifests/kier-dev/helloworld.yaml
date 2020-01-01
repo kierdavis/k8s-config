@@ -54,7 +54,7 @@ metadata:
     app: helloworld
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    #cert-manager.io/issuer: letsencrypt-staging
+    cert-manager.io/issuer: letsencrypt-staging
 spec:
   rules:
   - host: helloworld.kierdavis.com
@@ -63,7 +63,7 @@ spec:
       - backend:
           serviceName: helloworld
           servicePort: http
-  #tls:
-  #- hosts:
-  #  - helloworld.kierdavis.com
-  #  secretName: helloworld-tls
+  tls:
+  - hosts:
+    - helloworld.kierdavis.com
+    secretName: helloworld-tls
