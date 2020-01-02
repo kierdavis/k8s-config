@@ -1,6 +1,21 @@
 # Music streaming using mstream: https://www.mstream.io/
 
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mstream-cache
+  namespace: kier
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5G
+  storageClassName: ceph-disposable
+
+---
+
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mstream-config-template
@@ -112,8 +127,8 @@ spec:
         hostPath:
           path: /home/k8s/kier/music
       - name: cache
-        hostPath:
-          path: /home/k8s/kier/mstream-cache
+        persistentVolumeClaim:
+          claimName: mstream-cache
 
 ---
 
