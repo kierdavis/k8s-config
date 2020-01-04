@@ -24,6 +24,8 @@ metadata:
     app: polaris
 spec:
   replicas: 1
+  strategy:
+    type: Recreate  # delete the old pod before creating the new one, since two pods can't mount mstream-cache at once
   selector:
     matchLabels:
       app: polaris
