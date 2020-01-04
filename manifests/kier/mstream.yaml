@@ -69,6 +69,8 @@ spec:
       labels:
         app: mstream
     spec:
+      nodeSelector:  # remove when no longer dependent on /home/k8s
+        kubernetes.io/hostname: beagle2
       initContainers:
       - name: init
         image: busybox:1.28

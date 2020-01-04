@@ -36,6 +36,8 @@ spec:
       labels:
         app: git-server
     spec:
+      nodeSelector:  # remove when no longer dependent on /home/k8s
+        kubernetes.io/hostname: beagle2
       containers:
       - name: git-server
         image: kierdavis/git-server-docker:latest

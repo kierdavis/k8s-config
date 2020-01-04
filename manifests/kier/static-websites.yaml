@@ -34,6 +34,8 @@ spec:
       labels:
         app: static-websites
     spec:
+      nodeSelector:  # remove when no longer dependent on /var/www
+        kubernetes.io/hostname: beagle2
       containers:
       - name: static-websites
         image: nginx

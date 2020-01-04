@@ -17,6 +17,8 @@ spec:
       labels:
         app: wiki
     spec:
+      nodeSelector:  # remove when no longer dependent on /home/k8s
+        kubernetes.io/hostname: beagle2
       containers:
       - name: wiki
         image: adtac/gollum-alpine:latest

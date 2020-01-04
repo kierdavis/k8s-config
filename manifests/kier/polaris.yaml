@@ -32,6 +32,8 @@ spec:
       labels:
         app: polaris
     spec:
+      nodeSelector:  # remove when no longer dependent on /home/k8s
+        kubernetes.io/hostname: beagle2
       containers:
       - name: polaris
         image: kierdavis/docker-polaris:latest
