@@ -1,0 +1,108 @@
+# mopidy music playback server
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mopidy-config
+  namespace: kier
+  labels:
+    app: mopidy
+data:
+  mopidy.conf: |
+    [core]
+    data_dir = /var/lib/mopidy
+    [local]
+    media_dir = /music
+    [audio]
+    #output = tee name=t ! queue ! autoaudiosink t. ! queue ! udpsink host=0.0.0.0 port=5555
+    output = queue ! autoaudiosink
+    [m3u]
+    playlists_dir = /var/lib/mopidy/playlists
+    [http]
+    hostname = 0.0.0.0
+    [mpd]
+    hostname = 0.0.0.0
+    #[gmusic]
+    #username=USERNAME
+    #password=PASSWORD
+    #[soundcloud]
+    #auth_token=TOKEN
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mopidy
+  namespace: kier
+  labels:
+    app: mopidy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mopidy
+  template:
+    metadata:
+      labels:
+        app: mopidy
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: butterfly
+      containers:
+      - name: mopidy
+        image: wernight/mopidy
+        command: ["mopidy", "--config", "/config/mopidy.conf:/config-secret/mopidy.conf"]
+        volumeMounts:
+        - name: dev-snd
+          mountPath: /dev/snd
+        - name: config
+          mountPath: /config
+          readOnly: true
+        - name: config-secret
+          mountPath: /config-secret
+          readOnly: true
+          # TODO: mount a PV at /var/lib/mopidy for the database
+          # TODO: mount music at /music
+        ports:
+        - name: http
+          containerPort: 6680
+        - name: mpd
+          containerPort: 6600
+        securityContext:
+          runAsUser: 0
+          runAsGroup: 0
+          privileged: true
+      volumes:
+      - name: dev-snd
+        hostPath:
+          path: /dev/snd
+      - name: config
+        configMap:
+          name: mopidy-config
+      - name: config-secret
+        secret:
+          secretName: mopidy-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mopidy
+  namespace: kier
+  labels:
+    app: mopidy
+spec:
+  type: NodePort
+  selector:
+    app: mopidy
+  ports:
+  - name: http
+    port: 6680
+    nodePort: 30001
+    targetPort: http
+  - name: mpd
+    port: 6600
+    nodePort: 30000
+    targetPort: mpd
