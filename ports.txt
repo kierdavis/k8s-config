@@ -3,9 +3,9 @@ Ports allocated on beagle2
 == k8s services ==
 80     http
 443    https
-9002   git server ssh
 30000  mopidy mpd
 30001  mopidy http
+30002  git server ssh
 
 == k8s infrastructure ==
 2379   etcd

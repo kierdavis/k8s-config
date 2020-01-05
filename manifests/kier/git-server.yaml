@@ -68,10 +68,12 @@ metadata:
   labels:
     app: git-server
 spec:
+  type: NodePort
   selector:
     app: git-server
   ports:
   - name: ssh
     port: 22
     targetPort: ssh
+    nodePort: 30002
     protocol: TCP
