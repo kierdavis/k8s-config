@@ -1,0 +1,12 @@
+postgresqlDatabase: dracona
+postgresqlUsername: postgres
+postgresqlPassword: POSTGRES
+
+service:
+  type: NodePort
+  nodePort: 30003
+
+persistence:
+  enabled: true
+  storageClass: ceph-disposable
+  size: 2Gi

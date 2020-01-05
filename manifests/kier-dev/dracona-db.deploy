@@ -1,0 +1,10 @@
+#!/bin/sh
+set -o errexit -o nounset -o pipefail
+
+export release_name=dracona-db
+export release_namespace=kier-dev
+export chart_repo=https://charts.bitnami.com
+export chart_name=postgresql
+export values=$(dirname $0)/dracona-db.values
+
+exec $(dirname $0)/../../tools/helm-deploy.sh
