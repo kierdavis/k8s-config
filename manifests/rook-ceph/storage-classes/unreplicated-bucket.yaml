@@ -1,0 +1,32 @@
+apiVersion: ceph.rook.io/v1
+kind: CephObjectStore
+metadata:
+  name: unreplicated
+  namespace: rook-ceph
+spec:
+  metadataPool:
+    failureDomain: osd
+    replicated:
+      size: 1
+  dataPool:
+    failureDomain: osd
+    replicated:
+      size: 1
+  gateway:
+    type: s3
+    sslCertificateRef:
+    port: 80
+    securePort:
+    instances: 1
+
+---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ceph-unreplicated-bucket
+provisioner: ceph.rook.io/bucket
+reclaimPolicy: Retain
+parameters:
+  objectStoreName: unreplicated
+  objectStoreNamespace: rook-ceph
