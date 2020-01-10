@@ -9,4 +9,4 @@ export chart_repo=https://charts.rook.io/release
 export chart_name=rook-ceph
 export values=$(dirname $0)/operator.values
 
-exec $(dirname $0)/../../tools/helm-deploy.sh
+exec $(dirname $0)/../../tools/helm-deploy.sh "$@"
