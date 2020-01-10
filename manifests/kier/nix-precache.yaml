@@ -78,6 +78,7 @@ metadata:
   labels:
     app: nix-precache
   annotations:
+    kubernetes.io/ingress.class: nginx-external
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/issuer: letsencrypt-prod
 spec:

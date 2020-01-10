@@ -1,0 +1,26 @@
+kind: Deployment
+
+# Ensure the old gets deleted before the new pod is created, because two pods can't bind port 80 (or 443) at the same time.
+updateStrategy:
+  type: Recreate
+
+# Only this node has a public IP address.
+nodeSelector:
+  kubernetes.io/hostname: beagle2
+
+# Fix default port numbers clashing with other services.
+extraArgs:
+  healthz-port: 10270
+  status-port: 10271
+  stream-port: 10272
+livenessProbe:
+  port: 10270
+readinessProbe:
+  port: 10270
+
+# Specify which Ingress objects should be served.
+ingressClass: nginx-external
+
+# Networking config.
+hostNetwork: true
+dnsPolicy: ClusterFirstWithHostNet
