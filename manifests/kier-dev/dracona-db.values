@@ -8,5 +8,5 @@ service:
 
 persistence:
   enabled: true
-  storageClass: ceph-disposable
+  storageClass: ceph-unreplicated
   size: 2Gi

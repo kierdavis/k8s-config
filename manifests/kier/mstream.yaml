@@ -11,7 +11,7 @@ spec:
   resources:
     requests:
       storage: 5G
-  storageClassName: ceph-disposable
+  storageClassName: ceph-unreplicated
 
 ---
 
