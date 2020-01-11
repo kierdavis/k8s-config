@@ -1,0 +1,4 @@
+# https://cert-manager.io/docs/installation/compatibility/#disabling-webhook
+# Disabled because the apiserver is timing out trying to connect to the webhook.
+webhook:
+  enabled: false

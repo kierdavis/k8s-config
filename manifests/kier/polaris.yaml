@@ -90,7 +90,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx-external
     nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
   - host: polaris.kierdavis.com
