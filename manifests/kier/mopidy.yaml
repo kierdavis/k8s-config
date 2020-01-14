@@ -14,8 +14,7 @@ data:
     [local]
     media_dir = /music
     [audio]
-    #output = tee name=t ! queue ! autoaudiosink t. ! queue ! udpsink host=0.0.0.0 port=5555
-    output = queue ! autoaudiosink
+    output = queue ! pulsesink
     [m3u]
     playlists_dir = /var/lib/mopidy/playlists
     [http]
@@ -54,8 +53,10 @@ spec:
         image: wernight/mopidy
         command: ["mopidy", "--config", "/config/mopidy.conf:/config-secret/mopidy.conf"]
         volumeMounts:
-        - name: dev-snd
-          mountPath: /dev/snd
+        - name: pulseaudio-socket
+          mountPath: /run/pulse/native
+        - name: pulseaudio-cookie
+          mountPath: /run/pulse/cookie
         - name: config
           mountPath: /config
           readOnly: true
@@ -64,6 +65,11 @@ spec:
           readOnly: true
           # TODO: mount a PV at /var/lib/mopidy for the database
           # TODO: mount music at /music
+        env:
+        - name: PULSE_SERVER
+          value: unix:/run/pulse/native
+        - name: PULSE_COOKIE
+          value: /run/pulse/cookie
         ports:
         - name: http
           containerPort: 6680
@@ -72,11 +78,13 @@ spec:
         securityContext:
           runAsUser: 0
           runAsGroup: 0
-          privileged: true
       volumes:
-      - name: dev-snd
+      - name: pulseaudio-socket
         hostPath:
-          path: /dev/snd
+          path: /run/pulse/native
+      - name: pulseaudio-cookie
+        hostPath:
+          path: /run/pulse/.config/pulse/cookie
       - name: config
         configMap:
           name: mopidy-config
