@@ -1,0 +1,4 @@
+all:
+  hosts:
+    beagle2:
+      ansible_host: kierdavis.com

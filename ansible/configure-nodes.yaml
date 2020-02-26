@@ -1,0 +1,55 @@
+- hosts: beagle2
+  remote_user: root
+  tasks:
+  - name: Install/upgrade wireguard
+    apt:
+      name: wireguard-tools
+      state: latest
+  - name: Configure wireguard interface
+    template:
+      src: files/beagle2-wg-k8s.conf.j2
+      dest: /etc/wireguard/wg-k8s.conf
+      owner: root
+      group: root
+      mode: '0600'
+    register: wireguard_config
+  - name: (Re)start wireguard interface
+    service:
+      name: wg-quick@wg-k8s
+      state: restarted
+    when: wireguard_config.changed
+  - name: Install/upgrade kubeadm
+    apt:
+      name: kubeadm
+      state: latest
+  - name: Check if kubernetes is already set up
+    stat:
+      path: /etc/kubernetes/kubelet.conf
+    register: kubelet_config
+  - name: Setup kubernetes
+    shell: kubeadm init --apiserver-advertise-address=172.27.0.1 --control-plane-endpoint=172.27.0.1 > /var/log/kubeadm-init.log
+    when: not kubelet_config.stat.exists
+  - name: Install kubeconfig for user root
+    copy:
+      remote_src: true
+      src: /etc/kubernetes/admin.conf
+      dest: /root/.kube/config
+      owner: root
+      group: root
+      mode: '0600'
+  - name: Install kubeconfig for user kier
+    copy:
+      remote_src: true
+      src: /etc/kubernetes/admin.conf
+      dest: /home/kier/.kube/config
+      owner: kier
+      group: kier
+      mode: '0600'
+  - name: Install kubeconfig for user iand
+    copy:
+      remote_src: true
+      src: /etc/kubernetes/admin.conf
+      dest: /home/iand/.kube/config
+      owner: iand
+      group: iand
+      mode: '0600'
