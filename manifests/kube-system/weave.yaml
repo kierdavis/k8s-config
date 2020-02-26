@@ -12,8 +12,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.10/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNiIsIEdpdFZlcnNpb246InYxLjE2LjAiLCBHaXRDb21taXQ6IjJiZDk2NDNjZWU1YjNiM2E1ZWNiZDNhZjQ5ZDA5MDE4ZjA3NzNjNzciLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA5LTE4VDE0OjM2OjUzWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE2IiwgR2l0VmVyc2lvbjoidjEuMTYuMCIsIEdpdENvbW1pdDoiMmJkOTY0M2NlZTViM2IzYTVlY2JkM2FmNDlkMDkwMThmMDc3M2M3NyIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDktMThUMTQ6Mjc6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==",
-              "date": "Sat Sep 28 2019 15:38:40 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNSIsIEdpdFZlcnNpb246InYxLjE1LjYiLCBHaXRDb21taXQ6IjcwMTVmNzFlNzVmNjcwZWI5ZTdlYmQ0YjU3NDk2MzlkNDJlMjAwNzkiLCBHaXRUcmVlU3RhdGU6ImFyY2hpdmUiLCBCdWlsZERhdGU6IjE5NzAtMDEtMDFUMDA6MDA6MDFaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMTciLCBHaXRWZXJzaW9uOiJ2MS4xNy4zIiwgR2l0Q29tbWl0OiIwNmFkOTYwYmZkMDNiMzljODMxMGFhZjkyZDFlN2MxMmNlNjE4MjEzIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMC0wMi0xMVQxODowNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xMy42IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+              "date": "Wed Feb 26 2020 01:22:53 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -28,8 +28,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.10/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNiIsIEdpdFZlcnNpb246InYxLjE2LjAiLCBHaXRDb21taXQ6IjJiZDk2NDNjZWU1YjNiM2E1ZWNiZDNhZjQ5ZDA5MDE4ZjA3NzNjNzciLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA5LTE4VDE0OjM2OjUzWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE2IiwgR2l0VmVyc2lvbjoidjEuMTYuMCIsIEdpdENvbW1pdDoiMmJkOTY0M2NlZTViM2IzYTVlY2JkM2FmNDlkMDkwMThmMDc3M2M3NyIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDktMThUMTQ6Mjc6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==",
-              "date": "Sat Sep 28 2019 15:38:40 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNSIsIEdpdFZlcnNpb246InYxLjE1LjYiLCBHaXRDb21taXQ6IjcwMTVmNzFlNzVmNjcwZWI5ZTdlYmQ0YjU3NDk2MzlkNDJlMjAwNzkiLCBHaXRUcmVlU3RhdGU6ImFyY2hpdmUiLCBCdWlsZERhdGU6IjE5NzAtMDEtMDFUMDA6MDA6MDFaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMTciLCBHaXRWZXJzaW9uOiJ2MS4xNy4zIiwgR2l0Q29tbWl0OiIwNmFkOTYwYmZkMDNiMzljODMxMGFhZjkyZDFlN2MxMmNlNjE4MjEzIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMC0wMi0xMVQxODowNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xMy42IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+              "date": "Wed Feb 26 2020 01:22:53 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -69,8 +69,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.10/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNiIsIEdpdFZlcnNpb246InYxLjE2LjAiLCBHaXRDb21taXQ6IjJiZDk2NDNjZWU1YjNiM2E1ZWNiZDNhZjQ5ZDA5MDE4ZjA3NzNjNzciLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA5LTE4VDE0OjM2OjUzWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE2IiwgR2l0VmVyc2lvbjoidjEuMTYuMCIsIEdpdENvbW1pdDoiMmJkOTY0M2NlZTViM2IzYTVlY2JkM2FmNDlkMDkwMThmMDc3M2M3NyIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDktMThUMTQ6Mjc6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==",
-              "date": "Sat Sep 28 2019 15:38:40 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNSIsIEdpdFZlcnNpb246InYxLjE1LjYiLCBHaXRDb21taXQ6IjcwMTVmNzFlNzVmNjcwZWI5ZTdlYmQ0YjU3NDk2MzlkNDJlMjAwNzkiLCBHaXRUcmVlU3RhdGU6ImFyY2hpdmUiLCBCdWlsZERhdGU6IjE5NzAtMDEtMDFUMDA6MDA6MDFaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMTciLCBHaXRWZXJzaW9uOiJ2MS4xNy4zIiwgR2l0Q29tbWl0OiIwNmFkOTYwYmZkMDNiMzljODMxMGFhZjkyZDFlN2MxMmNlNjE4MjEzIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMC0wMi0xMVQxODowNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xMy42IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+              "date": "Wed Feb 26 2020 01:22:53 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -92,8 +92,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.10/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNiIsIEdpdFZlcnNpb246InYxLjE2LjAiLCBHaXRDb21taXQ6IjJiZDk2NDNjZWU1YjNiM2E1ZWNiZDNhZjQ5ZDA5MDE4ZjA3NzNjNzciLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA5LTE4VDE0OjM2OjUzWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE2IiwgR2l0VmVyc2lvbjoidjEuMTYuMCIsIEdpdENvbW1pdDoiMmJkOTY0M2NlZTViM2IzYTVlY2JkM2FmNDlkMDkwMThmMDc3M2M3NyIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDktMThUMTQ6Mjc6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==",
-              "date": "Sat Sep 28 2019 15:38:40 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNSIsIEdpdFZlcnNpb246InYxLjE1LjYiLCBHaXRDb21taXQ6IjcwMTVmNzFlNzVmNjcwZWI5ZTdlYmQ0YjU3NDk2MzlkNDJlMjAwNzkiLCBHaXRUcmVlU3RhdGU6ImFyY2hpdmUiLCBCdWlsZERhdGU6IjE5NzAtMDEtMDFUMDA6MDA6MDFaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMTciLCBHaXRWZXJzaW9uOiJ2MS4xNy4zIiwgR2l0Q29tbWl0OiIwNmFkOTYwYmZkMDNiMzljODMxMGFhZjkyZDFlN2MxMmNlNjE4MjEzIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMC0wMi0xMVQxODowNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xMy42IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+              "date": "Wed Feb 26 2020 01:22:53 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -124,8 +124,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.10/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNiIsIEdpdFZlcnNpb246InYxLjE2LjAiLCBHaXRDb21taXQ6IjJiZDk2NDNjZWU1YjNiM2E1ZWNiZDNhZjQ5ZDA5MDE4ZjA3NzNjNzciLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA5LTE4VDE0OjM2OjUzWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE2IiwgR2l0VmVyc2lvbjoidjEuMTYuMCIsIEdpdENvbW1pdDoiMmJkOTY0M2NlZTViM2IzYTVlY2JkM2FmNDlkMDkwMThmMDc3M2M3NyIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDktMThUMTQ6Mjc6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==",
-              "date": "Sat Sep 28 2019 15:38:40 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNSIsIEdpdFZlcnNpb246InYxLjE1LjYiLCBHaXRDb21taXQ6IjcwMTVmNzFlNzVmNjcwZWI5ZTdlYmQ0YjU3NDk2MzlkNDJlMjAwNzkiLCBHaXRUcmVlU3RhdGU6ImFyY2hpdmUiLCBCdWlsZERhdGU6IjE5NzAtMDEtMDFUMDA6MDA6MDFaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMTciLCBHaXRWZXJzaW9uOiJ2MS4xNy4zIiwgR2l0Q29tbWl0OiIwNmFkOTYwYmZkMDNiMzljODMxMGFhZjkyZDFlN2MxMmNlNjE4MjEzIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMC0wMi0xMVQxODowNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xMy42IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+              "date": "Wed Feb 26 2020 01:22:53 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -148,8 +148,8 @@ items:
         cloud.weave.works/launcher-info: |-
           {
             "original-request": {
-              "url": "/k8s/v1.10/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNiIsIEdpdFZlcnNpb246InYxLjE2LjAiLCBHaXRDb21taXQ6IjJiZDk2NDNjZWU1YjNiM2E1ZWNiZDNhZjQ5ZDA5MDE4ZjA3NzNjNzciLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDE5LTA5LTE4VDE0OjM2OjUzWiIsIEdvVmVyc2lvbjoiZ28xLjEyLjkiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpTZXJ2ZXIgVmVyc2lvbjogdmVyc2lvbi5JbmZve01ham9yOiIxIiwgTWlub3I6IjE2IiwgR2l0VmVyc2lvbjoidjEuMTYuMCIsIEdpdENvbW1pdDoiMmJkOTY0M2NlZTViM2IzYTVlY2JkM2FmNDlkMDkwMThmMDc3M2M3NyIsIEdpdFRyZWVTdGF0ZToiY2xlYW4iLCBCdWlsZERhdGU6IjIwMTktMDktMThUMTQ6Mjc6MTdaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9Cg==",
-              "date": "Sat Sep 28 2019 15:38:40 GMT+0000 (UTC)"
+              "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIxNSIsIEdpdFZlcnNpb246InYxLjE1LjYiLCBHaXRDb21taXQ6IjcwMTVmNzFlNzVmNjcwZWI5ZTdlYmQ0YjU3NDk2MzlkNDJlMjAwNzkiLCBHaXRUcmVlU3RhdGU6ImFyY2hpdmUiLCBCdWlsZERhdGU6IjE5NzAtMDEtMDFUMDA6MDA6MDFaIiwgR29WZXJzaW9uOiJnbzEuMTIuOSIsIENvbXBpbGVyOiJnYyIsIFBsYXRmb3JtOiJsaW51eC9hbWQ2NCJ9ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMTciLCBHaXRWZXJzaW9uOiJ2MS4xNy4zIiwgR2l0Q29tbWl0OiIwNmFkOTYwYmZkMDNiMzljODMxMGFhZjkyZDFlN2MxMmNlNjE4MjEzIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMC0wMi0xMVQxODowNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xMy42IiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+              "date": "Wed Feb 26 2020 01:22:53 GMT+0000 (UTC)"
             },
             "email-address": "support@weave.works"
           }
@@ -176,7 +176,7 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: 'docker.io/weaveworks/weave-kube:2.5.2'
+              image: 'docker.io/weaveworks/weave-kube:2.6.0'
               readinessProbe:
                 httpGet:
                   host: 127.0.0.1
@@ -209,7 +209,7 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: 'docker.io/weaveworks/weave-npc:2.5.2'
+              image: 'docker.io/weaveworks/weave-npc:2.6.0'
               resources:
                 requests:
                   cpu: 10m
