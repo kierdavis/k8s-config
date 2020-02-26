@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
 # Upgrade a release if it exists, or install it if it doesn't.

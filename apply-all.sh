@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # If initialising the cluster from scratch, certain elements should be brought up in order.
 kubectl apply -f manifests/kube-system/weave.yaml
