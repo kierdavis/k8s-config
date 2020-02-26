@@ -22,13 +22,10 @@
     apt:
       name: kubeadm
       state: latest
-  - name: Check whether kubernetes is already set up
-    stat:
-      path: /etc/kubernetes/kubelet.conf
-    register: kubelet_config
-  - name: Bring up kubernetes
-    shell: kubeadm init --apiserver-advertise-address=172.27.0.1 --control-plane-endpoint=172.27.0.1 > /var/log/kubeadm-init.log
-    when: not kubelet_config.stat.exists
+  - name: Start kubernetes
+    shell:
+      cmd: kubeadm init --apiserver-advertise-address=172.27.0.1 --control-plane-endpoint=172.27.0.1 > /var/log/kubeadm-init.log
+      creates: /etc/kubernetes/kubelet.conf
   - name: Install kubeconfig for user root
     copy:
       remote_src: true
@@ -55,11 +52,41 @@
       mode: '0600'
   - name: Make node schedulable
     command: kubectl taint nodes --all node-role.kubernetes.io/master-
+    ignore_errors: true
   - name: Download a copy of the configuration repo
     git:
       repo: https://github.com/kierdavis/k8s-config
       dest: /root/k8s-config
-  - name: Bring CNI plugin (Weave Net) online
+  - name: Install python packages needed for ansible to manage kubernetes resources
+    pip:
+      name:
+      - openshift
+      - requests
+  - name: Install helm
+    shell:
+      cmd: |
+        mkdir -p /opt/helm
+        cd /opt/helm
+        curl -L https://get.helm.sh/helm-v3.1.1-linux-amd64.tar.gz | tar -xz
+        ln -s /opt/helm/linux-amd64/helm /usr/local/bin/helm
+      creates: /usr/local/bin/helm
+  - name: Start Weave Net (the container networking plugin)
     k8s:
       state: present
       src: /root/k8s-config/manifests/kube-system/weave.yaml
+  - name: Create ingress namespace
+    k8s:
+      state: present
+      src: /root/k8s-config/manifests/ingress/namespace.yaml
+  - name: Create ingress controller
+    command: /root/k8s-config/manifests/ingress/nginx-external.deploy up
+  - name: Create resource definitions for certificate manager
+    k8s:
+      state: present
+      src: /root/k8s-config/manifests/ingress/cert-manager-crds.yaml
+  - name: Create certificate manager
+    command: /root/k8s-config/manifests/ingress/cert-manager.deploy up
+  - name: Create certificate issuers
+    k8s:
+      state: present
+      src: /root/k8s-config/manifests/ingress/cert-manager-issuers.yaml
