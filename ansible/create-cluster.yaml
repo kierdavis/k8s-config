@@ -22,11 +22,11 @@
     apt:
       name: kubeadm
       state: latest
-  - name: Check if kubernetes is already set up
+  - name: Check whether kubernetes is already set up
     stat:
       path: /etc/kubernetes/kubelet.conf
     register: kubelet_config
-  - name: Setup kubernetes
+  - name: Bring up kubernetes
     shell: kubeadm init --apiserver-advertise-address=172.27.0.1 --control-plane-endpoint=172.27.0.1 > /var/log/kubeadm-init.log
     when: not kubelet_config.stat.exists
   - name: Install kubeconfig for user root
@@ -53,3 +53,13 @@
       owner: iand
       group: iand
       mode: '0600'
+  - name: Make node schedulable
+    command: kubectl taint nodes --all node-role.kubernetes.io/master-
+  - name: Download a copy of the configuration repo
+    git:
+      repo: https://github.com/kierdavis/k8s-config
+      dest: /root/k8s-config
+  - name: Bring CNI plugin (Weave Net) online
+    k8s:
+      state: present
+      src: /root/k8s-config/manifests/kube-system/weave.yaml
