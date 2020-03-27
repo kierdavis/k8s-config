@@ -6,7 +6,7 @@ Ports allocated on beagle2
 30000  mopidy mpd
 30001  mopidy http
 30002  git server ssh
-30003  postgres for dracona development
+30003  factorio
 
 == k8s infrastructure ==
 2379   etcd
