@@ -10,7 +10,7 @@ data:
     server {
       listen 80;
       listen [::]:80;
-      server_name kierdavis.com;
+      server_name kierdavis.com newlinenew.life new.line-new.life;
       root /var/www/kierdavis.com/www/htdocs;
       index index.html index.htm;
     }
@@ -96,7 +96,25 @@ spec:
       - backend:
           serviceName: static-websites
           servicePort: http
+  - host: newlinenew.life
+    http:
+      paths:
+      - backend:
+          serviceName: static-websites
+          servicePort: http
+  - host: new.line-new.life
+    http:
+      paths:
+      - backend:
+          serviceName: static-websites
+          servicePort: http
   tls:
   - hosts:
     - kierdavis.com
-    secretName: static-websites-tls
+    secretName: static-websites-tls-kierdavis-com
+  - hosts:
+    - newlinenew.life
+    secretName: static-websites-tls-newlinenew-life
+  - hosts:
+    - new.line-new.life
+    secretName: static-websites-tls-new-line-new-life
