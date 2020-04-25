@@ -8,10 +8,6 @@ updateStrategy:
 nodeSelector:
   kubernetes.io/hostname: beagle2
 
-# Only listen on this IP address.
-config:
-  bind-address: 176.9.121.81,2a01:4f8:151:8047::2
-
 # Fix default port numbers clashing with other services.
 extraArgs:
   healthz-port: 10270

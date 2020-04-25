@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
-export release_name=nginx-external
+export release_name=controller
 export release_namespace=ingress
 export chart_repo=https://charts.bitnami.com/bitnami
 export chart_name=nginx-ingress-controller
-export values=$(dirname $0)/nginx-external.values
+export values=$(dirname $0)/controller.values
 
 exec $(dirname $0)/../../tools/helm-deploy.sh "$@"
