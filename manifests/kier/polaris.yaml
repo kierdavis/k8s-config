@@ -1,20 +1,5 @@
 # Music streaming using polaris: https://github.com/agersant/polaris
 
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: polaris-cache
-  namespace: kier
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2G
-  storageClassName: ceph-unreplicated
-
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,8 +42,7 @@ spec:
         hostPath:
           path: /home/k8s/kier/music
       - name: cache
-        persistentVolumeClaim:
-          claimName: polaris-cache
+        emptyDir: {}
 
 ---
 
