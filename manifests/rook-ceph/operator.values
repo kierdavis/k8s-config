@@ -1,8 +1,0 @@
-# Configures the rook-ceph operator, which makes the ceph cluster configuration become reality.
-
-csi:
-  enableRbdDriver: true
-  enableCephfsDriver: true
-  enableGrpcMetrics: false
-  enableSnapshotter: false
-  kubeletDirPath: /var/lib/kubelet
