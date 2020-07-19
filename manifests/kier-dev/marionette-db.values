@@ -1,0 +1,5 @@
+postgresqlUsername: marionette
+postgresqlPassword: marionette
+postgresqlDatabase: marionette
+persistence:
+  enabled: false
