@@ -18,10 +18,10 @@
       name: wg-quick@wg-k8s
       state: restarted
     when: wireguard_config.changed
-  - name: Install/upgrade kubeadm
+  - name: Install kubeadm
     apt:
       name: kubeadm
-      state: latest
+      state: present
   - name: Start kubernetes
     shell:
       cmd: kubeadm init --apiserver-advertise-address=172.27.0.1 --control-plane-endpoint=172.27.0.1 > /var/log/kubeadm-init.log
