@@ -7,6 +7,7 @@ Ports allocated on beagle2
 30001  mopidy http
 30002  git server ssh
 30003  factorio
+30004  openttd
 
 == k8s infrastructure ==
 2379   etcd
