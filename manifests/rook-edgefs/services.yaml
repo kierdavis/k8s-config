@@ -1,0 +1,7 @@
+apiVersion: edgefs.rook.io/v1
+kind: NFS
+metadata:
+  name: default-nfs
+  namespace: rook-edgefs
+spec:
+  instances: 2
