@@ -49,16 +49,16 @@ data:
     [difficulty]
     max_no_competitors = 0
     number_towns = 2
-    industry_density = 5
+    industry_density = 4
     max_loan = 300000
     initial_interest = 2
-    vehicle_costs = 0
+    vehicle_costs = 1
     competitor_speed = 2
     vehicle_breakdowns = 1
     subsidy_multiplier = 2
     construction_cost = 0
-    terrain_type = 1
-    quantity_sea_lakes = 0
+    terrain_type = 2
+    quantity_sea_lakes = 3
     economy = false
     line_reverse_mode = false
     disasters = false
@@ -66,19 +66,19 @@ data:
 
     [game_creation]
     town_name = english
-    landscape = tropic
+    landscape = temperate
     snow_line_height = 15
-    starting_year = 1970
+    starting_year = 1950
     land_generator = 1
-    oil_refinery_limit = 32
+    oil_refinery_limit = 16
     tgen_smoothness = 1
-    variety = 0
+    variety = 2
     generation_seed = 21933591
     tree_placer = 2
     heightmap_rotation = 0
     se_flat_world_height = 1
-    map_x = 9
-    map_y = 9
+    map_x = 10
+    map_y = 10
     water_borders = 15
     custom_town_number = 1
     custom_sea_level = 2
@@ -131,7 +131,7 @@ data:
     train_signal_side = 1
     road_stop_on_town_road = true
     road_stop_on_competitor_road = true
-    raw_industry_construction = 0
+    raw_industry_construction = 2
     industry_platform = 1
     freeform_edges = true
     extra_tree_placement = 2
@@ -145,10 +145,10 @@ data:
     serve_neutral_industries = true
 
     [economy]
-    town_layout = 0
+    town_layout = 1
     allow_town_roads = true
-    found_town = 0
-    allow_town_level_crossings = true
+    found_town = 1
+    allow_town_level_crossings = false
     station_noise_level = false
     inflation = true
     multiple_industry_per_town = false
