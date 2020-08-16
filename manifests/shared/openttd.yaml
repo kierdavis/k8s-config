@@ -535,7 +535,7 @@ spec:
           mountPath: /config
       containers:
       - name: openttd
-        image: redditopenttd/openttd:latest
+        image: redditopenttd/openttd:1.10.2
         ports:
         - name: client
           containerPort: 3979
