@@ -49,6 +49,7 @@ data:
     [difficulty]
     max_no_competitors = 0
     number_towns = 2
+    number_industries = 4
     industry_density = 4
     max_loan = 300000
     initial_interest = 2
@@ -58,7 +59,7 @@ data:
     subsidy_multiplier = 2
     construction_cost = 0
     terrain_type = 2
-    quantity_sea_lakes = 3
+    quantity_sea_lakes = 2
     economy = false
     line_reverse_mode = false
     disasters = false
@@ -68,9 +69,9 @@ data:
     town_name = english
     landscape = temperate
     snow_line_height = 15
-    starting_year = 1950
+    starting_year = 1980
     land_generator = 1
-    oil_refinery_limit = 16
+    oil_refinery_limit = 32
     tgen_smoothness = 1
     variety = 2
     generation_seed = 21933591
@@ -103,7 +104,7 @@ data:
     wagon_speed_limits = true
     disable_elrails = false
     freight_trains = 1
-    plane_speed = 4
+    plane_speed = 2
     dynamic_engines = true
     plane_crashes = 2
     extend_vehicle_life = 0
@@ -151,14 +152,14 @@ data:
     allow_town_level_crossings = false
     station_noise_level = false
     inflation = true
-    multiple_industry_per_town = false
+    multiple_industry_per_town = true
     bribe = true
     exclusive_rights = true
     fund_buildings = true
     fund_roads = true
     give_money = true
     smooth_economy = true
-    allow_shares = false
+    allow_shares = true
     feeder_payment_share = 75
     town_growth_rate = 2
     larger_towns = 4
