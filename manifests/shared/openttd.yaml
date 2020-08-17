@@ -74,7 +74,6 @@ data:
     oil_refinery_limit = 32
     tgen_smoothness = 1
     variety = 2
-    generation_seed = 21933591
     tree_placer = 2
     heightmap_rotation = 0
     se_flat_world_height = 1
@@ -405,7 +404,7 @@ data:
     bytes_per_frame = 8
     bytes_per_frame_burst = 256
     max_init_time = 100
-    max_join_time = 500
+    max_join_time = 5000
     max_download_time = 1000
     max_password_time = 2000
     max_lag_time = 500
