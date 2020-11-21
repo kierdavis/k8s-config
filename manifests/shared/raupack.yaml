@@ -65,8 +65,47 @@ data:
         "name": "rauyran",
         "level": 4,
         "bypassesPlayerLimit": true
+      },
+      {
+        "uuid": "fa3050fb-5a44-4930-9c13-2c04a27474fb",
+        "name": "Kahlah",
+        "level": 4,
+        "bypassesPlayerLimit": true
       }
     ]
+  whitelist.json: |
+    [
+      {
+        "uuid": "5eef6e38-ac1e-49dd-88d9-61aa27e95afc",
+        "name": "Blackjot"
+      },
+      {
+        "uuid": "d3bd6638-b6b1-452f-8d56-ccfaa301a578",
+        "name": "polardusk"
+      },
+      {
+        "uuid": "5eda9ae1-f168-40f8-a653-292dfea30e86",
+        "name": "kierdavis"
+      },
+      {
+        "uuid": "3bc81c93-6ce1-4032-b207-5d32d67c50d6",
+        "name": "archinot"
+      },
+      {
+        "uuid": "0f8edc39-5243-4f2d-b8a2-fa3b40c80402",
+        "name": "rauyran"
+      },
+      {
+        "uuid": "fa3050fb-5a44-4930-9c13-2c04a27474fb",
+        "name": "Kahlah"
+      },
+      {
+        "uuid": "294db196-de5f-4855-ab6f-1def8e48ef2c",
+        "name": "freyadavis"
+      }
+    ]
+
+
 
 ---
 
