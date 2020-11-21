@@ -12,7 +12,7 @@ data:
     allow-nether=true
     broadcast-console-to-ops=true
     broadcast-rcon-to-ops=true
-    difficulty=easy
+    difficulty=hard
     enable-command-block=false
     enable-query=false
     enable-rcon=false
