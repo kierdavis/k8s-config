@@ -48,7 +48,7 @@ data:
     spawn-animals=true
     spawn-monsters=true
     spawn-npcs=true
-    spawn-protection=16
+    spawn-protection=0
     use-native-transport=true
     view-distance=10
     white-list=true
