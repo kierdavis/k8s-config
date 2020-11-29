@@ -52,7 +52,6 @@ spec:
   - name: factorio
     port: 34197
     targetPort: factorio
-    nodePort: 30003
     protocol: UDP
 
 ---

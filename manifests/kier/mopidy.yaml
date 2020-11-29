@@ -108,9 +108,7 @@ spec:
   ports:
   - name: http
     port: 6680
-    nodePort: 30001
     targetPort: http
   - name: mpd
     port: 6600
-    nodePort: 30000
     targetPort: mpd
