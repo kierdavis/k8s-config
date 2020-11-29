@@ -1,0 +1,75 @@
+# Git repository server
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syncthing
+  namespace: kier
+  labels:
+    app: syncthing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: syncthing
+  template:
+    metadata:
+      labels:
+        app: syncthing
+    spec:
+      nodeSelector:  # remove when no longer dependent on /home/k8s
+        kubernetes.io/hostname: beagle2
+      containers:
+      - name: syncthing
+        image: syncthing/syncthing
+        ports:
+        - name: data
+          containerPort: 22000
+          protocol: TCP
+        - name: gui
+          containerPort: 8384
+          protocol: TCP
+        volumeMounts:
+        - name: data
+          mountPath: /var/syncthing
+      volumes:
+      - name: data
+        hostPath:
+          path: /home/k8s/kier/syncthing
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing-data
+  namespace: kier
+  labels:
+    app: syncthing
+spec:
+  type: NodePort
+  selector:
+    app: syncthing
+  ports:
+  - name: data
+    port: 22000
+    targetPort: data
+    protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing
+  namespace: kier
+  labels:
+    app: syncthing
+spec:
+  selector:
+    app: syncthing
+  ports:
+  - name: gui
+    port: 80
+    targetPort: gui
+    protocol: TCP

@@ -35,6 +35,4 @@ Ports allocated on beagle2
 == host system ==
 22     ssh
 25     smtp
-8384   syncthing
 14137  wireguard
-22000  syncthing
