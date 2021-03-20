@@ -76,4 +76,5 @@ spec:
   - name: ssh
     port: 22
     targetPort: ssh
+    nodePort: 30002
     protocol: TCP
