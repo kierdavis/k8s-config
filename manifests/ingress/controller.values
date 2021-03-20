@@ -14,9 +14,11 @@ extraArgs:
   status-port: 10271
   stream-port: 10272
 livenessProbe:
-  port: 10270
+  httpGet:
+    port: 10270
 readinessProbe:
-  port: 10270
+  httpGet:
+    port: 10270
 
 # Specify which Ingress objects should be served.
 ingressClass: nginx-external
